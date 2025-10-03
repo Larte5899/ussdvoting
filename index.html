@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>eVote USSD — Fast, Offline Voting</title>
+    <meta name="description" content="USSD voting built on Arkesel. Fast, offline, and secure." />
+    <meta name="theme-color" content="#0b1220" />
+
+    <!-- Favicon / App icons -->
+    <link rel="icon" href="assets/img/logo.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/img/logo.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="eVote USSD — Fast, Offline Voting" />
+    <meta property="og:description" content="USSD voting built on Arkesel. Fast, offline, and secure." />
+    <meta property="og:image" content="assets/img/og-cover.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter (optional but nice for shares) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="eVote USSD — Fast, Offline Voting" />
+    <meta name="twitter:description" content="USSD voting built on Arkesel. Fast, offline, and secure." />
+    <meta name="twitter:image" content="assets/img/og-cover.jpg" />
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- App CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <img src="assets/img/logo.png" alt="eVote logo" width="28" height="28" />
+          <span class="fw-semibold">eVote USSD</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMain">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+            <li class="nav-item"><a class="nav-link" href="#sim">Simulator</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-lg-3">
+              <a class="btn btn-success btn-sm px-3" href="#sim">Try demo</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero bg-gradient-dark text-white py-5">
+      <div class="container py-4">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <span class="badge rounded-pill bg-success-subtle text-success-emphasis mb-3">
+              <i class="bi bi-hash"></i> USSD Voting on Arkesel
+            </span>
+            <h1 class="display-5 fw-bold">Fast, Offline Voting—No Internet Needed</h1>
+            <p class="lead opacity-85 mt-2">
+              Dial the code, pick a nominee, confirm—done. Built for scale, reliability, and zero-data users.
+            </p>
+
+            <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+              <div class="ussd-code shadow-sm">
+                <code id="ussdCodeText" class="me-2 fw-semibold">*928*303#</code>
+                <button class="btn btn-outline-light btn-sm" id="copyCodeBtn">
+                  <i class="bi bi-clipboard"></i> Copy
+                </button>
+              </div>
+              <a class="btn btn-success" href="#sim">
+                <i class="bi bi-play-fill me-1"></i> Open Simulator
+              </a>
+              <a class="btn btn-outline-light" href="#how">Learn more</a>
+            </div>
+
+            <div class="mt-4 small text-white-50">
+              <i class="bi bi-shield-check me-1"></i> Secure flows ·
+              <i class="bi bi-broadcast me-1 ms-2"></i> Works on basic phones ·
+              <i class="bi bi-speedometer2 me-1 ms-2"></i> Low latency
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-card card bg-dark border-0 shadow-lg overflow-hidden">
+              <div class="card-body p-0">
+                <div class="terminal">
+                  <div class="term-bar">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="term-title">arkesel-ussd — session</span>
+                  </div>
+                  <pre class="m-0 px-3 py-3 small text-white-50">
+POST /index.php
+Content-Type: application/json
+
+{
+  "sessionID": "ab1c2d3e",
+  "userID": "233555123456",
+  "newSession": true,
+  "msisdn": "233555123456",
+  "userData": "*928*303#",
+  "network": "MTN"
+}
+                  </pre>
+                </div>
+              </div>
+            </div>
+            <div class="text-white-50 small mt-2">Sample request sent to your PHP endpoint.</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Features -->
+    <section id="features" class="py-5 bg-body">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="fw-semibold">Built for real-world voting</h2>
+          <p class="text-muted">Simple UX for voters. Solid control for admins.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="feature card h-100">
+              <div class="card-body">
+                <div class="icon-wrap"><i class="bi bi-phone"></i></div>
+                <h5 class="card-title">Offline by design</h5>
+                <p class="card-text text-muted">Works with no data—just dial the short code and vote.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="feature card h-100">
+              <div class="card-body">
+                <div class="icon-wrap"><i class="bi bi-gear"></i></div>
+                <h5 class="card-title">Flexible menus</h5>
+                <p class="card-text text-muted">Dynamic prompts, categories, and validation from your PHP logic.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="feature card h-100">
+              <div class="card-body">
+                <div class="icon-wrap"><i class="bi bi-shield-lock"></i></div>
+                <h5 class="card-title">Secure flows</h5>
+                <p class="card-text text-muted">Hardened endpoints, predictable states, and safe responses.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="feature card h-100">
+              <div class="card-body">
+                <div class="icon-wrap"><i class="bi bi-graph-up"></i></div>
+                <h5 class="card-title">Scales easily</h5>
+                <p class="card-text text-muted">Stateless sessions let you scale horizontally behind your API.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-secondary d-flex align-items-start gap-2 mt-4">
+          <i class="bi bi-info-circle mt-1"></i>
+          <div>
+            <strong>Admin tip:</strong> Host your PHP endpoint on a server (cPanel/VPS). GitHub Pages is static only, so use the Simulator (below) with your live URL.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="py-5 bg-light">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <h2 class="fw-semibold">How it works</h2>
+            <ol class="mt-3 lh-lg">
+              <li><strong>Voter dials</strong> your USSD code <code>*928*303#</code>.</li>
+              <li><strong>Arkesel</strong> forwards each step to your <code>index.php</code>.</li>
+              <li><strong>Your PHP</strong> returns menu text + <code>continueSession</code> state.</li>
+              <li>When done, return <code>continueSession: false</code> to close the session.</li>
+            </ol>
+            <p class="text-muted small m-0">The sample logic below mirrors the PHP you shared.</p>
+          </div>
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <pre class="small m-0"><code>// index.php (excerpt)
+// respond with JSON: message + continueSession
+// ...you already have this implemented per Arkesel spec.</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Simulator -->
+    <section id="sim" class="py-5">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="fw-semibold">USSD Simulator</h2>
+          <p class="text-muted">Try the flow right here. Set your live PHP endpoint below.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-5">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="mb-3">
+                  <label class="form-label">Backend Endpoint (your hosted <code>index.php</code>)</label>
+                  <input type="url" class="form-control" id="endpointUrl" placeholder="https://yourdomain.com/index.php" />
+                  <div class="form-text">Leave empty to use local demo logic (no network).</div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Test MSISDN</label>
+                  <input type="tel" class="form-control" id="msisdnInput" placeholder="233555123456" value="233555123456" />
+                </div>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-dark" id="startSessionBtn">
+                    <i class="bi bi-phone"></i> Start New Session
+                  </button>
+                  <button class="btn btn-outline-secondary" id="resetSessionBtn">Reset</button>
+                </div>
+                <div class="small text-muted mt-2">
+                  CORS note: Your endpoint must allow requests from this page’s origin for live testing.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span class="text-muted small">Session: <span id="sessId">—</span></span>
+                  <span id="statusBadge" class="badge bg-secondary">idle</span>
+                </div>
+
+                <div class="ussd-screen mt-3 flex-grow-1">
+                  <textarea id="ussdDisplay" class="form-control ussd-display" rows="8" readonly placeholder="USSD messages will appear here..."></textarea>
+                </div>
+
+                <div class="input-group mt-3">
+                  <input type="text" class="form-control" id="userReply" placeholder="Reply (e.g., 1 or 2)" disabled />
+                  <button class="btn btn-success" id="sendReplyBtn" disabled>Send</button>
+                </div>
+
+                <div class="small mt-2 text-muted">
+                  Using Arkesel format:
+                  <code>{"sessionID","userID","newSession","msisdn","userData","network"}</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-5 bg-body-tertiary">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <h2 class="fw-semibold">Ship your USSD in days</h2>
+            <p class="text-muted">Need menu design, validation rules, or payments integration? Ping the team.</p>
+            <div class="d-flex gap-2 flex-wrap">
+              <a class="btn btn-success" href="mailto:hello@example.com"><i class="bi bi-envelope me-1"></i> Email</a>
+              <a class="btn btn-outline-dark" href="https://wa.me/233555000000" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-1"></i> WhatsApp</a>
+            </div>
+            <div class="small text-muted mt-3">Replace contact details with yours.</div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <h6 class="fw-semibold mb-2">Quick checklist</h6>
+                <ul class="m-0 ps-3 small lh-lg">
+                  <li>Short code active on Arkesel</li>
+                  <li>Live PHP endpoint deployed</li>
+                  <li>Session states & input validation covered</li>
+                  <li>Logging & analytics connected</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white-50 border-top border-secondary">
+      <div class="container d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2">
+        <div>© <span id="year"></span> eVote USSD. All rights reserved.</div>
+        <div class="small">Built with <i class="bi bi-lightning-charge"></i> Bootstrap · Arkesel USSD API</div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
